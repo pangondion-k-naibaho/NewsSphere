@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_circular_rectangle_white"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNewsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:lines="3"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/merriweather_regular"
+        android:textStyle="bold"
+        android:text="@string/tvDummy_NewsTitle"/>
+
+    <TextView
+        android:id="@+id/tvNewsAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:textColor="@color/red"
+        android:fontFamily="@font/merriweather_light"
+        android:text="@string/tvDummy_NewsAuthor"/>
+
+    <TextView
+        android:id="@+id/tvNewsPublished"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsAuthor"
+        android:textSize="16sp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/merriweather_light"
+        android:textAllCaps="true"
+        android:text="@string/tvDummy_NewsPublished"/>
+
+    <ImageView
+        android:id="@+id/ivNews"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNewsTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNewsTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNewsPublished"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/newssphere_logo"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
