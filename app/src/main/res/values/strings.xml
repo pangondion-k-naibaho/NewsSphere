@@ -3,4 +3,6 @@
     <string name="tvDummy_NewsTitle">This is Dummy News Title</string>
     <string name="tvDummy_NewsAuthor">Dummy Author</string>
     <string name="tvDummy_NewsPublished">DD MMM YYYY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,6 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/powder_white"
+    android:padding="2dp"
     tools:context=".view.activity.Home.HomeActivity">
+
+    <ImageView
+        android:id="@+id/ivAppsLogo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/newssphere_logo"
+        android:layout_marginTop="5dp"/>
+
+    <com.newssphere.client.view.advanced_ui.InputSearchView
+        android:id="@+id/isvSearchNews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/ivAppsLogo"
+        app:layout_constraintEnd_toStartOf="@+id/ivMore"
+        app:layout_constraintTop_toTopOf="@+id/ivAppsLogo"
+        app:layout_constraintBottom_toBottomOf="@+id/ivAppsLogo"
+        android:layout_marginStart="5dp"/>
+
+    <ImageView
+        android:id="@+id/ivMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/isvSearchNews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/isvSearchNews"
+        app:layout_constraintBottom_toBottomOf="@+id/isvSearchNews"
+        android:src="@drawable/ic_more_grey"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlCategoryNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isvSearchNews"
+        android:layout_marginTop="10dp"
+        app:tabTextColor="@color/socialist"
+        app:tabBackground="@color/powder_white"
+        app:tabMode="scrollable"
+        app:tabMaxWidth="100dp"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpCategoryNews"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlCategoryNews"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/pbHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:indeterminateTint="@color/socialist"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

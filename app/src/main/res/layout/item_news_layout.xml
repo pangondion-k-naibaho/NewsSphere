@@ -4,15 +4,20 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_circular_rectangle_white"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginVertical="2dp">
 
     <TextView
         android:id="@+id/tvNewsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivNews"
+        app:layout_constraintBottom_toTopOf="@+id/tvNewsAuthor"
         android:lines="3"
+        android:ellipsize="end"
+        android:textAlignment="textStart"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:fontFamily="@font/merriweather_regular"
@@ -21,11 +26,14 @@
 
     <TextView
         android:id="@+id/tvNewsAuthor"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvNewsTitle"
+        app:layout_constraintEnd_toEndOf="@+id/tvNewsTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle"
         android:layout_marginTop="5dp"
+        android:lines="1"
+        android:ellipsize="end"
         android:textSize="16sp"
         android:textColor="@color/red"
         android:fontFamily="@font/merriweather_light"
