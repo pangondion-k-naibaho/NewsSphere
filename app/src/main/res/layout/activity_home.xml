@@ -22,20 +22,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/ivAppsLogo"
-        app:layout_constraintEnd_toStartOf="@+id/ivMore"
+        app:layout_constraintEnd_toStartOf="@+id/btnMore"
         app:layout_constraintTop_toTopOf="@+id/ivAppsLogo"
         app:layout_constraintBottom_toBottomOf="@+id/ivAppsLogo"
         android:layout_marginStart="5dp"/>
 
-    <ImageView
-        android:id="@+id/ivMore"
+    <ImageButton
+        android:id="@+id/btnMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/isvSearchNews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/isvSearchNews"
         app:layout_constraintBottom_toBottomOf="@+id/isvSearchNews"
-        android:src="@drawable/ic_more_grey"/>
+        android:background="@drawable/ic_more_grey"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlCategoryNews"

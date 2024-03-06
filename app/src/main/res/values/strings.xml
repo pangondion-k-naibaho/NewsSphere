@@ -7,4 +7,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tvPopUpDescription">Oops! Something went wrong.\nPlease try again</string>
     <string name="btnTxt_popup">OK</string>
+    <string name="tvAboutDescription">Berdiri sejak tidak kebagian kursi</string>
+    <string name="menu_about">About</string>
 </resources>

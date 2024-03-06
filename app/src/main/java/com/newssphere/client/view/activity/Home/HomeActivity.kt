@@ -5,7 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import android.view.MenuItem.OnMenuItemClickListener
 import android.view.View
+import android.view.View.OnClickListener
+import android.widget.PopupMenu
 import androidx.activity.viewModels
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.toLowerCase
@@ -18,6 +22,7 @@ import com.newssphere.client.databinding.ActivityHomeBinding
 import com.newssphere.client.model.Constants
 import com.newssphere.client.viewmodel.HomeViewModel
 import com.newssphere.client.model.Constants.COUNTRY_CONSTANTS.CATEGORY_CONSTANTS.Companion.CATEGORY_ENUM
+import com.newssphere.client.view.activity.About.AboutActivity
 
 class HomeActivity : AppCompatActivity(), CategoriesHomeCommunicator {
     private lateinit var binding: ActivityHomeBinding
@@ -47,7 +52,7 @@ class HomeActivity : AppCompatActivity(), CategoriesHomeCommunicator {
     }
 
     private fun setUpView(){
-        with(binding){
+        binding.apply{
             val newsCategoryAdapter = CategoryFragmentAdapter(this@HomeActivity)
             vpCategoryNews.apply {
                 adapter = newsCategoryAdapter
@@ -64,6 +69,28 @@ class HomeActivity : AppCompatActivity(), CategoriesHomeCommunicator {
             TabLayoutMediator(tlCategoryNews, vpCategoryNews, false, true){tab, position ->
                 tab.text = categoryTitleArray[position]
             }.attach()
+
+            btnMore.setOnClickListener(object: OnClickListener {
+                override fun onClick(v: View?) {
+                    val popUpMenu = PopupMenu(this@HomeActivity, v!!)
+                    popUpMenu.menuInflater.inflate(R.menu.home_menu, popUpMenu.menu)
+
+                    popUpMenu.setOnMenuItemClickListener(object: PopupMenu.OnMenuItemClickListener{
+                        override fun onMenuItemClick(item: MenuItem?): Boolean {
+                            if(item!!.itemId == R.id.menuAbout){
+                                startActivity(
+                                    AboutActivity.newIntent(this@HomeActivity)
+                                )
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                            }
+                            return true
+                        }
+
+                    })
+
+                    popUpMenu.show()
+                }
+            })
         }
     }
 
