@@ -10,14 +10,13 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.newssphere.client.R
-import com.newssphere.client.databinding.FragmentAllBinding
 import com.newssphere.client.databinding.FragmentNewsBinding
-import com.newssphere.client.databinding.FragmentScienceBinding
 import com.newssphere.client.model.data_class.Article
 import com.newssphere.client.view.activity.Home.CategoriesHomeCommunicator
 import com.newssphere.client.view.adapter.ItemNewsAdapter
+import com.newssphere.client.view.advanced_ui.PopUpDialogListener
+import com.newssphere.client.view.advanced_ui.showPopUpDialog
 import com.newssphere.client.viewmodel.HomeViewModel
 
 class ScienceFragment : Fragment() {
@@ -72,7 +71,18 @@ class ScienceFragment : Fragment() {
         })
 
         homeViewModel.isFail.observe(this@ScienceFragment.requireActivity(), {
-            Log.d(TAG, "isFail: $it")
+            if(it){
+                this@ScienceFragment.requireActivity().showPopUpDialog(
+                    getString(R.string.tvPopUpDescription),
+                    R.drawable.earth_cry,
+                    object: PopUpDialogListener {
+                        override fun onClickListener() {
+                            this@ScienceFragment.requireActivity().closeOptionsMenu()
+                        }
+
+                    }
+                )
+            }
         })
 
         homeViewModel.newsCollection.observe(this@ScienceFragment.requireActivity(), {collectionNews->
