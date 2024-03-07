@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">NewsSphere</string>
-    <string name="tvDummy_NewsTitle">This is Dummy News Title</string>
+    <string name="tvDummy_NewsTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="tvDummy_NewsAuthor">Dummy Author</string>
     <string name="tvDummy_NewsPublished">DD MMM YYYY</string>
+    <string name="tvDummy_NewsContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ante metus dictum at tempor commodo ullamcorper a lacus vestibulum. Imperdiet massa tincidunt nunc pulvinar. Mi sit amet mauris commodo. Arcu dui vivamus arcu felis bibendum. Ornare arcu dui vivamus arcu. Leo urna molestie at elementum eu facilisis sed. At elementum eu facilisis sed odio. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget. Massa enim nec dui nunc mattis enim ut. Id interdum velit laoreet id donec ultrices tincidunt. Duis at tellus at urna condimentum mattis pellentesque id. Augue neque gravida in fermentum et sollicitudin ac orci.\nTurpis tincidunt id aliquet risus feugiat in ante. In massa tempor nec feugiat nisl pretium fusce. Accumsan in nisl nisi scelerisque eu ultrices. Scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Commodo odio aenean sed adipiscing diam donec adipiscing tristique risus. Amet facilisis magna etiam tempor orci eu lobortis elementum. Mauris augue neque gravida in fermentum et sollicitudin ac. Dignissim sodales ut eu sem integer. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Vitae tempus quam pellentesque nec nam aliquam. Tristique senectus et netus et. Sit amet consectetur adipiscing elit duis tristique. Eu mi bibendum neque egestas congue quisque egestas diam. Varius quam quisque id diam vel quam elementum.</string>
+    <string name="tvDummy_NewsPublishedBy">Published by : %s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tvPopUpDescription">Oops! Something went wrong.\nPlease try again</string>
     <string name="btnTxt_popup">OK</string>
     <string name="tvAboutDescription">Berdiri sejak tidak kebagian kursi</string>
     <string name="menu_about">About</string>
+    <string name="tvDummy_NewsDescription">\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra vitae congue eu consequat ac felis donec et.\"</string>
 </resources>

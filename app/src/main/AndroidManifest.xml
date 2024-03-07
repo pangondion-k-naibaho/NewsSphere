@@ -15,6 +15,9 @@
         android:theme="@style/Theme.NewsSphere"
         tools:targetApi="31">
         <activity
+            android:name=".view.activity.Detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.About.AboutActivity"
             android:exported="false" />
         <activity

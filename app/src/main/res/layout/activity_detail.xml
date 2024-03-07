@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.Detail.DetailActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlDetail"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Image View displaying the image -->
+        <ImageView
+            android:id="@+id/ivNewsBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/newssphere_logo"
+            android:scaleType="centerCrop" />
+
+        <!-- Image View displaying the back icon -->
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_white"
+            android:layout_margin="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvCategory"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="Dummy Category"-->
+<!--            android:paddingStart="5dp"-->
+<!--            android:background="@drawable/bg_ribbon_blue"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="12sp"-->
+<!--            android:fontFamily="@font/merriweather_bold"/>-->
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvNewsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlDetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/merriweather_black"
+        android:textAlignment="textStart"
+        android:text="@string/tvDummy_NewsTitle"/>
+
+    <ScrollView
+        android:id="@+id/svDetailNews"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@+id/tvNewsTitle"
+        app:layout_constraintEnd_toEndOf="@+id/tvNewsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvNewsDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/merriweather_italic"
+                android:textSize="15sp"
+                android:text="@string/tvDummy_NewsDescription"/>
+
+            <TextView
+                android:id="@+id/tvNewsContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvNewsDescription"
+                android:layout_marginTop="10dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/merriweathersans_variablefont_wght"
+                android:textColor="@color/seared_grey"
+                android:text="@string/tvDummy_NewsContent"
+                tools:ignore="MissingConstraints"/>
+
+            <TextView
+                android:id="@+id/tvNewsPublishedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNewsContent"
+                android:layout_marginTop="10dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/merriweather_regular"
+                android:text="@string/tvDummy_NewsPublished"/>
+
+            <TextView
+                android:id="@+id/tvNewsPublishedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNewsPublishedAt"
+                android:layout_marginTop="10dp"
+                android:textSize="13sp"
+                android:textColor="@color/socialist"
+                android:fontFamily="@font/merriweather_regular"
+                android:text="@string/tvDummy_NewsPublishedBy"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.newssphere.client.R
 import com.newssphere.client.databinding.FragmentNewsBinding
 import com.newssphere.client.model.data_class.Article
+import com.newssphere.client.view.activity.Detail.DetailActivity
 import com.newssphere.client.view.activity.Home.CategoriesHomeCommunicator
 import com.newssphere.client.view.adapter.ItemNewsAdapter
 import com.newssphere.client.view.advanced_ui.PopUpDialogListener
@@ -91,7 +92,14 @@ class TechnologyFragment : Fragment() {
                         collectionNews.articles!!.toMutableList(),
                         object: ItemNewsAdapter.ItemListener{
                             override fun onItemClicked(item: Article) {
-                                Toast.makeText(this@TechnologyFragment.requireActivity(), "News Clicked", Toast.LENGTH_SHORT).show()
+                                this@TechnologyFragment.requireActivity().startActivity(
+                                    DetailActivity.newIntent(
+                                        this@TechnologyFragment.requireActivity(),
+                                        deliveredCategory!!,
+                                        item
+                                    )
+                                )
+                                this@TechnologyFragment.requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                             }
                         }
                     )
