@@ -15,12 +15,13 @@ import com.newssphere.client.databinding.FragmentNewsBinding
 import com.newssphere.client.model.data_class.Article
 import com.newssphere.client.view.activity.Detail.DetailActivity
 import com.newssphere.client.view.activity.Home.CategoriesHomeCommunicator
+import com.newssphere.client.view.activity.Home.HomeCategoriesCommunicator
 import com.newssphere.client.view.adapter.ItemNewsAdapter
 import com.newssphere.client.view.advanced_ui.PopUpDialogListener
 import com.newssphere.client.view.advanced_ui.showPopUpDialog
 import com.newssphere.client.viewmodel.HomeViewModel
 
-class AllFragment : Fragment() {
+class AllFragment : Fragment(), HomeCategoriesCommunicator {
     private val TAG = AllFragment::class.java.simpleName
 
     private lateinit var binding: FragmentNewsBinding
@@ -28,6 +29,7 @@ class AllFragment : Fragment() {
     private val homeViewModel by viewModels<HomeViewModel>()
     private lateinit var categoriesHomeCommunicator: CategoriesHomeCommunicator
     private var currentPage: Int? = null
+    private var itemNewsAdapter: ItemNewsAdapter? = null
 
     companion object{
         private const val DELIVERED_CATEGORY = "DELIVERED_CATEGORY"
@@ -87,7 +89,7 @@ class AllFragment : Fragment() {
         homeViewModel.newsCollection.observe(this@AllFragment.requireActivity(), {collectionNews->
             binding.apply {
                 rvItemNews.apply {
-                    val itemNewsAdapter = ItemNewsAdapter(
+                    itemNewsAdapter = ItemNewsAdapter(
                         collectionNews.articles!!.toMutableList(),
                         object: ItemNewsAdapter.ItemListener{
                             override fun onItemClicked(item: Article) {
@@ -119,10 +121,10 @@ class AllFragment : Fragment() {
                                 && totalItemCount >= collectionNews.articles!!.size
                             ){
                                 currentPage = currentPage?.plus(1)
-                                homeViewModel.getNewsCollectionMore(category = null, currentPage!!)
+                                homeViewModel.getNewsCollectionMore(category = null, page = currentPage!!)
                                 homeViewModel.newsCollection2.observe(this@AllFragment.requireActivity(), { collectionNews2 ->
                                     if(collectionNews2.articles != null){
-                                        itemNewsAdapter.addItem(collectionNews2.articles!!)
+                                        itemNewsAdapter!!.addItem(collectionNews2.articles!!)
                                     }
                                 })
                             }
@@ -137,5 +139,34 @@ class AllFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         currentPage = null
+    }
+
+    override fun searchOnSelectedCategories(inputString: String) {
+        Log.d(TAG, "searchOnSelectedCategories: $inputString")
+        currentPage = 1
+
+        homeViewModel.getNewsCollectionMore(category = null, searchInput = inputString, page = currentPage!!)
+
+        homeViewModel.newsCollection2.observe(this@AllFragment, {collectionNews ->
+            Log.d(TAG, "result : ${collectionNews.articles}")
+            if(!collectionNews.articles.isNullOrEmpty()){
+                itemNewsAdapter!!.updateItem(collectionNews.articles!!)
+            }else{
+                Toast.makeText(this@AllFragment.requireActivity(), "Shows no result", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    override fun clearSearching() {
+        currentPage = 1
+        homeViewModel.getNewsCollectionMore(category = null, searchInput = null, page = currentPage!!)
+
+        homeViewModel.newsCollection2.observe(this@AllFragment.requireActivity(), {collectionNews ->
+            if(!collectionNews.articles.isNullOrEmpty()){
+                itemNewsAdapter!!.updateItem(collectionNews.articles!!)
+            }else{
+                Toast.makeText(this@AllFragment.requireActivity(), "Couldn't fetch data", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

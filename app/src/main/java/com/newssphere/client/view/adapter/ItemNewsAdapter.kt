@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class ItemNewsAdapter(
-    var data: MutableList<Article>,
-    private val listener: ItemListener
+    var data: MutableList<Article>?= null,
+    private val listener: ItemListener?= null
 ): RecyclerView.Adapter<ItemNewsAdapter.ItemHolder>() {
     interface ItemListener{
         fun onItemClicked(item: Article)
@@ -56,15 +56,27 @@ class ItemNewsAdapter(
         return ItemHolder(view)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = data!!.size
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.bind(data.get(position), listener)
+        holder.bind(data!!.get(position), listener!!)
     }
 
     fun addItem(listArticle: List<Article>){
-        val startPosition = data.size
-        data.addAll(listArticle)
+        val startPosition = data!!.size
+        data!!.addAll(listArticle)
         notifyItemRangeInserted(startPosition, listArticle.size)
+    }
+
+    fun updateItem(listArticle: List<Article>){
+        try {
+            if(listArticle != null){
+                data!!.clear()
+                data!!.addAll(listArticle)
+                notifyDataSetChanged()
+            }
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
     }
 }

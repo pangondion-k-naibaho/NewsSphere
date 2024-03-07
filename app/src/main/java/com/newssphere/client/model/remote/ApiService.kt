@@ -13,6 +13,7 @@ interface ApiService {
         @Query("apiKey") apiKey: String = NEWSAPI_KEY,
         @Query("country") country: String?= US,
         @Query("category") category: String? = null,
+        @Query("q") searchInput: String?= null,
         @Query("page") page: Int
     ): Call<NewsCollection>
 }

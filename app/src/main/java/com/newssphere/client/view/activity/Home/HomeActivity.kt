@@ -23,12 +23,14 @@ import com.newssphere.client.model.Constants
 import com.newssphere.client.viewmodel.HomeViewModel
 import com.newssphere.client.model.Constants.COUNTRY_CONSTANTS.CATEGORY_CONSTANTS.Companion.CATEGORY_ENUM
 import com.newssphere.client.view.activity.About.AboutActivity
+import com.newssphere.client.view.advanced_ui.InputSearchView
 
 class HomeActivity : AppCompatActivity(), CategoriesHomeCommunicator {
     private lateinit var binding: ActivityHomeBinding
     private val TAG = HomeActivity::class.java.simpleName
     private val homeViewModel by viewModels<HomeViewModel>()
     private var selectedFragment: Fragment?= null
+    private var retrievedInput: String?= null
 
     companion object{
         fun newIntent(context: Context): Intent = Intent(context, HomeActivity::class.java)
@@ -91,6 +93,25 @@ class HomeActivity : AppCompatActivity(), CategoriesHomeCommunicator {
                     popUpMenu.show()
                 }
             })
+
+            isvSearchNews.apply {
+                setListener(object: InputSearchView.InputSearchListener{
+                    override fun onClickSearch() {
+                        retrievedInput = getText()
+                        Log.d(TAG, "selectedFragment: ${selectedFragment!!::class.java.simpleName}")
+                        val homeCategoriesCommunicator = selectedFragment as HomeCategoriesCommunicator
+
+                        homeCategoriesCommunicator.searchOnSelectedCategories(retrievedInput!!)
+                    }
+
+                    override fun onClearSearch() {
+                        clearText()
+                         val homeCategoriesCommunicator = selectedFragment as HomeCategoriesCommunicator
+                        homeCategoriesCommunicator.clearSearching()
+                    }
+
+                })
+            }
         }
     }
 

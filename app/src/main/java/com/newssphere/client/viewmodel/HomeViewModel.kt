@@ -24,9 +24,9 @@ class HomeViewModel: ViewModel() {
     private var _newsCollection2 = MutableLiveData<NewsCollection>()
     val newsCollection2 : LiveData<NewsCollection> = _newsCollection2
 
-    fun getNewsCollection(category: String?= null, page: Int){
+    fun getNewsCollection(category: String?= null, searchInput: String?= null, page: Int){
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getCollectionTopHeadlineNews(category = category, page = page)
+        val client = ApiConfig.getApiService().getCollectionTopHeadlineNews(category = category, searchInput = searchInput, page = page)
 
         client.enqueue(object: retrofit2.Callback<NewsCollection>{
             override fun onResponse(
@@ -53,9 +53,9 @@ class HomeViewModel: ViewModel() {
         })
     }
 
-    fun getNewsCollectionMore(category: String?= null, page: Int){
+    fun getNewsCollectionMore(category: String?= null, searchInput: String?= null,  page: Int){
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getCollectionTopHeadlineNews(category = category, page = page)
+        val client = ApiConfig.getApiService().getCollectionTopHeadlineNews(category = category, searchInput = searchInput, page = page)
 
         client.enqueue(object: retrofit2.Callback<NewsCollection>{
             override fun onResponse(

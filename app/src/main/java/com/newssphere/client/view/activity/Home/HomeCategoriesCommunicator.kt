@@ -1,5 +1,7 @@
 package com.newssphere.client.view.activity.Home
 
 interface HomeCategoriesCommunicator {
-    fun searchOnSelectedCategories()
+    fun searchOnSelectedCategories(inputString: String)
+
+    fun clearSearching()
 }
